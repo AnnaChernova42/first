@@ -1,0 +1,87 @@
+﻿<!--<head>-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>PicNet Table Filter Demo</title>
+      <script type="text/javascript" src="./JS/jquery-1.4.2.min.js"></script>            
+      <script type="text/javascript" src="./JS/picnet.table.filter.min.js"></script>    
+      <link type="text/css" rel="stylesheet" href="./JS/style.css" />
+      <script type="text/javascript">
+         $(document).ready(function() {
+         
+         
+           // Initialise Plugin
+             var options1 = {
+                 matchingRow: function(state, tr, textTokens) {
+                   if (!state || !state.id) {
+                     return true;
+                   }
+                   var child = tr.children('td:eq(2)');
+                   if (!child) return true;
+                   var val = child.text();
+                   switch (state.id) {
+                   case 'onlyyes':
+                     return state.value !== true || val === 'yes';
+                   case 'onlyno':
+                     return state.value !== true || val === 'no';
+                   default:
+                     return true;
+                   }
+                 }
+             };
+         
+             $('#result').tableFilter(options1);
+         
+         });
+      </script>
+   </head>
+   <body screen_capture_injected="true">
+      <div class="wrapper" />
+      <div class="content">
+
+
+         <div class="clear"></div>
+         <br />
+	    <h3>Table 1</h3>
+	    <table id="result">
+	       <thead>
+	          <tr>
+	             <th id="col1">Дата и время</th>
+	             <th id="col2">Важность</th>
+	             <th id="col3">Сообщение</th>
+	          </tr>
+	          <tr class="filters">
+	             <td><input type="text" id="demotable1_filter_0" class="filter" title="Quotes (&quot;) match phrases. (not) excludes a match from the results. (or) can be used to do Or searches. I.e. [red or blue] will match either red or blue. Numeric values support &gt;=, &gt;, &lt;=, &lt;, = and != operators." style="width: 100%;"/></td>
+	             <td><input type="text" id="demotable1_filter_1" class="filter" title="Quotes (&quot;) match phrases. (not) excludes a match from the results. (or) can be used to do Or searches. I.e. [red or blue] will match either red or blue. Numeric values support &gt;=, &gt;, &lt;=, &lt;, = and != operators." style="width: 100%;"/></td>
+	             <td><input type="text" id="demotable1_filter_2" class="filter" title="Quotes (&quot;) match phrases. (not) excludes a match from the results. (or) can be used to do Or searches. I.e. [red or blue] will match either red or blue. Numeric values support &gt;=, &gt;, &lt;=, &lt;, = and != operators." style="width: 100%;"/></td>
+	          </tr>
+	       </thead>
+	       <tbody>
+<!--</head>-->
+	          <tr>
+	             <td>Value424</td>
+	             <td>88 123 123 </td>
+	             <td>yes yes yes yes yes yes vvvvvv</td>
+	          </tr>
+	          <tr>
+	             <td>Value490</td>
+	             <td>89 </td>
+	             <td>yes</td>
+	          </tr>
+	          <tr>
+	             <td>Value204</td>
+	             <td>409 </td>
+	             <td>no</td>
+	          </tr>
+	          <tr>
+	             <td>Value492</td>
+	             <td>228 </td>
+	             <td>yes</td>
+	          </tr>
+<!--<tail>-->
+	       </tbody>
+	    </table>
+      </div>
+   </body>
+</html>
+<!--</tail>-->
